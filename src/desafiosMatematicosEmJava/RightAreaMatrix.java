@@ -10,14 +10,14 @@ public class RightAreaMatrix {
         var o = r.next().toUpperCase().charAt(0);
 
         populateMatrix(M);
-        var sum = matrixLeftAreaSum(M);
+        var sum = matrixRightAreaSum(M);
 
         if (o == 'M') { sum /= 30; }
         System.out.println(String.format("%.1f", sum));
     }
 
     // Método que retorna a soma dos valores da área direita das diagonais em uma matriz quadrada de ordem par
-    public static double matrixLeftAreaSum(double[][] matrix) {
+    public static double matrixRightAreaSum(double[][] matrix) {
         var sum = 0;
         var maxRightArea = (matrix.length/2) -1; //5
         var maxRightAreaIndex = maxRightArea;
