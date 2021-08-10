@@ -12,20 +12,29 @@ public class LeftAreaMatrix {
         populateMatrix(M);
         var sum = matrixLeftAreaSum(M);
 
-        if (o == 'M') { sum /= 30;}
+        if (o == 'M') { sum /= 30; }
         System.out.println(String.format("%.1f", sum));
     }
 
     // Método que retorna a soma dos valores da área esquerda das diagonais em uma matriz quadrada de ordem par
     public static double matrixLeftAreaSum(double[][] matrix) {
         var sum = 0;
-        var maxLeftAreaIndex = (matrix.length/2) -1;
+        var maxLeftArea = (matrix.length/2) -1; //5
+        var maxLeftAreaIndex = maxLeftArea+1;
 
-        for (int i = 1; i < matrix.length; i++) {
+        for (int i = 1; i <= maxLeftArea; i++) {
             for (int j = 0; j < i ; j++) {
                 sum += matrix[i][j];
             }
         }
+
+        for (int i = maxLeftAreaIndex; i <= matrix.length-2; i++) {
+            for (int j = maxLeftArea-1; j >= 0; j--) {
+                sum += matrix[i][j];
+            }
+            maxLeftArea--;
+        }
+
         return sum;
     }
 
