@@ -13,7 +13,7 @@ public class RightAreaMatrix {
         var sum = matrixLeftAreaSum(M);
 
         if (o == 'M') { sum /= 30; }
-        System.out.println(String.format("%.2f", sum));
+        System.out.println(String.format("%.1f", sum));
     }
 
     // Método que retorna a soma dos valores da área direita das diagonais em uma matriz quadrada de ordem par
