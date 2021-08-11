@@ -3,36 +3,37 @@ package desafiosMatematicosEmJava;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class LeftAreaMatrix {
+public class InferiorAreaMatrix {
+
     static Scanner r = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
         var M = new double[12][12];
         var o = r.next().toUpperCase().charAt(0);
-
         populateMatrix(M);
-        System.out.printf("%.1f", o == 'S' ? getLeftAreaSum(M) : getAverage(M));
+
+        System.out.printf("%.1f", o == 'S' ? getInferiorAreaSum(M) : getAverage(M));
     }
 
-    // Método que retorna a soma dos valores da área esquerda as diagonais em uma matriz quadrada de ordem par
-    public static double getLeftAreaSum(double[][] matrix) {
+    // Método que retorna a soma dos valores da área abaixo das diagonais em uma matriz quadrada de ordem par
+    public static double getInferiorAreaSum(double[][] matrix) {
         var sum = 0;
-        var actualIndexY = 1;
-        var actualLimitY = matrix.length-2;
+        var actualIndexX = 1;
+        var actualLimitX = matrix.length-2;
 
-        for (int i = 0; i < (matrix.length/2)-1 ; i++) {
-            for (int j = actualIndexY; j <= actualLimitY ; j++) {
-                sum += matrix[j][i] ;
+        for (int i = matrix.length-1; i > matrix.length/2 ; i--) {
+            for (int j = actualIndexX; j <= actualLimitX ; j++) {
+                sum += matrix[i][j] ;
             }
-            actualLimitY--;
-            actualIndexY++;
+            actualLimitX--;
+            actualIndexX++;
         }
         return sum;
     }
-
     public static double getAverage(double[][] M) {
-        return getLeftAreaSum(M) / 30.0;
+        return getInferiorAreaSum(M) / 30.0;
     }
+
     // Valores de entrada da matriz
     public static void populateMatrix(double[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
